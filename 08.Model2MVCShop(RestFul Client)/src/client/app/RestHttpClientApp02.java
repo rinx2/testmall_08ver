@@ -36,7 +36,7 @@ public class RestHttpClientApp02 {
 		
 //		System.out.println("\n====================================\n");
 //		// 1.2 Http Post 방식 Request : CodeHaus lib 사용
-//		RestHttpClientApp02.addProductTest_Codehaus();		
+		RestHttpClientApp02.addProductTest_Codehaus();		
 	
 	}
 	
@@ -142,10 +142,11 @@ public class RestHttpClientApp02 {
 		json.put("prodName", "JSON Test");
 		json.put("prodDetail", "Test 중임");
 		json.put("price", 10000);
+		
 		System.out.println(json.toString());
 		HttpEntity httpEntity01 = new StringEntity(json.toString(),"utf-8");
-
 		httpPost.setEntity(httpEntity01);
+		
 		HttpResponse httpResponse = httpClient.execute(httpPost);
 		
 		//==> Response 확인

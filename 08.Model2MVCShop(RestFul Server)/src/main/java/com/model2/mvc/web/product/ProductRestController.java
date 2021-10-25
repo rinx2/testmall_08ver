@@ -49,15 +49,17 @@ public class ProductRestController {
 		return "redirect:/product/addProductView.jsp";
 	}
 	
-	//@RequestMapping(value="json/addProduct", method=RequestMethod.POST)
-	public String addProduct(@RequestBody Product product) throws Exception {
+	@RequestMapping(value="json/addProduct", method=RequestMethod.POST)
+	public Product addProduct(@RequestBody Product product) throws Exception {
 		
 		System.out.println("/product/json/addProduct : POST");
 		
 		System.out.println("@RequestBody :: "+product);
 		productService.addProduct(product);
 		
-		return "redirect:/getProduct?prodNo="+product.getProdNo();
+		Product latestProduct = productService.getProduct(productService.getLatestProdNo());
+		
+		return latestProduct;
 	}
 	
 	@RequestMapping(value="json/getProduct/{prodNo}", method=RequestMethod.GET)
