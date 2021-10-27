@@ -41,7 +41,7 @@ public class ProductRestController {
 	@Value("#{commonProperties['pageSize']}")
 	int pageSize;
 	
-	//@RequestMapping(value="addProduct", method=RequestMethod.GET)
+	@RequestMapping(value="json/addProduct", method=RequestMethod.GET)
 	public String addProduct() {
 		
 		System.out.println("/product/addProduct : GET");
@@ -56,7 +56,6 @@ public class ProductRestController {
 		
 		System.out.println("@RequestBody :: "+product);
 		productService.addProduct(product);
-		
 		Product latestProduct = productService.getProduct(productService.getLatestProdNo());
 		
 		return latestProduct;

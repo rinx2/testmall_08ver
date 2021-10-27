@@ -128,7 +128,7 @@ public class RestHttpClientApp02 {
 		// HttpClient : Http Protocol 의 client 추상화 
 		HttpClient httpClient = new DefaultHttpClient();
 		
-		String url = "http://127.0.0.1:9999/user/json/addProduct";
+		String url = "http://127.0.0.1:9999/product/json/addProduct";
 		HttpPost httpPost = new HttpPost(url);
 		httpPost.setHeader("Accept", "application/json");
 		httpPost.setHeader("Content-Type", "application/json");
@@ -142,8 +142,8 @@ public class RestHttpClientApp02 {
 		json.put("prodName", "JSON Test");
 		json.put("prodDetail", "Test 중임");
 		json.put("price", 10000);
+		System.out.println("json.toString: "+json.toString());
 		
-		System.out.println(json.toString());
 		HttpEntity httpEntity01 = new StringEntity(json.toString(),"utf-8");
 		httpPost.setEntity(httpEntity01);
 		
@@ -178,7 +178,7 @@ public class RestHttpClientApp02 {
 		// HttpClient : Http Protocol 의 client 추상화 
 		HttpClient httpClient = new DefaultHttpClient();
 		
-		String url = "http://127.0.0.1:9999/product/json/login";
+		String url = "http://127.0.0.1:9999/product/json/addProduct";
 		HttpPost httpPost = new HttpPost(url);
 		httpPost.setHeader("Accept", "application/json");
 		httpPost.setHeader("Content-Type", "application/json");
@@ -195,8 +195,8 @@ public class RestHttpClientApp02 {
 		
 		//[ 방법 3 : codehaus 사용]
 		Product product01 = new Product();
-		product01.setProdName("JSON POST Test");
-		product01.setProdDetail("Post Test 중");
+		product01.setProdName("JSON POST Test2");
+		product01.setProdDetail("Post Test 중2222");
 		product01.setPrice(1500);
 		ObjectMapper objectMapper01 = new ObjectMapper();
 		//Object ==> JSON Value 로 변환
