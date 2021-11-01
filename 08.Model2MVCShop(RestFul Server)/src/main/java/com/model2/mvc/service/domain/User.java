@@ -2,10 +2,13 @@ package com.model2.mvc.service.domain;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.model2.mvc.common.Search;
 
 
 //==>회원정보를 모델링(추상화/캡슐화)한 Bean
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 	
 	///Field
@@ -76,13 +79,13 @@ public class User {
 		return phone;
 	}
 	public void setPhone(String phone) {
-		this.phone = phone;
 		/////////////// EL 적용 위해 추가 ///////////
 		if(phone != null && phone.length() !=0 ){
 			phone1 = phone.split("-")[0];
 			phone2 = phone.split("-")[1];
 			phone3 = phone.split("-")[2];
 		}
+		this.phone = phone;
 	}
 	public String getAddr() {
 		return addr;
