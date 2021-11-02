@@ -36,10 +36,10 @@
 	 <update	id="updateProduct"	parameterType="product" >
 	   	UPDATE product
 	   	<set>
-	   		prod_name 	= #{prodName},
-			prod_detail	= #{prodDetail},
-			price		= #{price},
-			image_file	= #{fileName}
+	   		<if test="prodName != null and prodName != ''">prod_name 	= #{prodName},</if>
+			<if test="prodDetail != null and prodDetail != ''">prod_detail	= #{prodDetail},</if>
+			<if test="price != null and price != ''">price	= #{price},</if>
+			<if test="fileName != null and fileName != ''">image_file	= #{fileName},</if>
 	   	</set>
 	   	WHERE prod_no = #{prodNo}
 	 </update>

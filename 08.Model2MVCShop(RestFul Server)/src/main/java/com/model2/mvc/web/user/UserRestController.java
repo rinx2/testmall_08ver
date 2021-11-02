@@ -81,4 +81,28 @@ public class UserRestController {
 		
 		return dbUser;
 	}
+	
+	@RequestMapping( value="json/updateUser", method=RequestMethod.GET )
+	public String updateUser( @RequestParam("userId") String userId , Model model ) throws Exception{
+
+		System.out.println("/user/updateUser : GET");
+		//Business Logic
+		User user = userService.getUser(userId);
+		// Model °ú View ¿¬°á
+		model.addAttribute("user", user);
+		
+		return "forward:/user/updateUser.jsp";
+	}
+
+	@RequestMapping( value="json/updateUser", method=RequestMethod.POST )
+	public User updateUser( @RequestBody User user ) throws Exception{
+
+		System.out.println("/user/json/updateUser : POST");
+		//Business Logic
+		userService.updateUser(user);
+		
+		User returnUser = userService.getUser(user.getUserId());
+
+		return returnUser;
+	}
 }
